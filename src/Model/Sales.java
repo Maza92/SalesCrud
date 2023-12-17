@@ -10,11 +10,10 @@ import lombok.Data;
 public class Sales {
     private int id;
     private LocalDate date;
-    private LocalDateTime hour;
     private ArrayList<Product> soldProducts;
     private double unitPrice;
     private double totalSale;
-    private Client client;
+    private int idClient;
     private Payment paymentMethod;
     private String shippingAddress;
     private String state;

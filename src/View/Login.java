@@ -212,7 +212,7 @@ public class Login extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(MainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(MainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 501, Short.MAX_VALUE)
         );
 
         pack();
@@ -248,6 +248,10 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         MainBtn.setBackground(Color.decode("#FFFFFF"));
         main.setForeground(Color.decode("#000000"));
+        
+        Main main = new Main();
+        main.setVisible(true);
+        dispose();
     }//GEN-LAST:event_mainMousePressed
 
     /**
