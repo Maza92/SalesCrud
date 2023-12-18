@@ -4,21 +4,23 @@
  */
 package Model;
 
+import  java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Connection;
 /**
  *
  * @author Luis
  */
-public class Connection {
+public class DatabaseConnector {
     private String base = "SalesManager";
-    private String user = "mazapandb";
-    private String password = "edison12";
-    private String url = "jdbc:sqlserver://localhost:1433;databasename=" + base;
+    private String url = "jdbc:sqlserver://DESKTOP-FG8MLK9;databaseName=" + base + ";integratedSecurity=true;encrypt=false;";
+
     private Connection con = null;
     
-    public Connection getConnection() throws ClassNotFoundException {
+    public Connection getConnection() throws ClassNotFoundException, SQLException {
         
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        con = DriverManager.getConnection(this.url, this.user, this.password);
+        con = (Connection) DriverManager.getConnection(this.url, "", "");
             
         return con;
     }
