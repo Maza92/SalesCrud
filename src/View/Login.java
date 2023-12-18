@@ -5,6 +5,7 @@
 package View;
 
 
+import Controller.LoginController;
 import Model.Sale;
 import java.awt.AlphaComposite;
 import java.awt.BorderLayout;
@@ -17,6 +18,7 @@ import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -27,6 +29,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -34,7 +37,7 @@ import javax.swing.JLabel;
  * @author Luis
  */
 public class Login extends javax.swing.JFrame {
-
+    LoginController controller;
     /**
      * Creates new form Login
      */
@@ -42,8 +45,8 @@ public class Login extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(this);
         TxtUser.setBorder(BorderFactory.createCompoundBorder(TxtUser.getBorder(), BorderFactory.createEmptyBorder(0, 13, 0, 0)));
-        TxtUser1.setBorder(BorderFactory.createCompoundBorder(TxtUser1.getBorder(), BorderFactory.createEmptyBorder(0, 13, 0, 0)));
-    
+        TxtPass.setBorder(BorderFactory.createCompoundBorder(TxtPass.getBorder(), BorderFactory.createEmptyBorder(0, 13, 0, 0)));
+        controller = new LoginController();
     }
     
     /**
@@ -64,9 +67,9 @@ public class Login extends javax.swing.JFrame {
         TxtUser = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        TxtUser1 = new javax.swing.JTextField();
         MainBtn = new javax.swing.JPanel();
         main = new javax.swing.JLabel();
+        TxtPass = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -154,19 +157,6 @@ public class Login extends javax.swing.JFrame {
         jLabel5.setAlignmentY(44.0F);
         MainPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 318, -1, -1));
 
-        TxtUser1.setBackground(new java.awt.Color(255, 255, 255));
-        TxtUser1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        TxtUser1.setForeground(new java.awt.Color(0, 0, 0));
-        TxtUser1.setToolTipText("");
-        TxtUser1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(229, 229, 229), 1, true));
-        TxtUser1.setPreferredSize(new java.awt.Dimension(415, 44));
-        TxtUser1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxtUser1ActionPerformed(evt);
-            }
-        });
-        MainPanel.add(TxtUser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 345, -1, -1));
-
         MainBtn.setBackground(new java.awt.Color(254, 175, 0));
         MainBtn.setPreferredSize(new java.awt.Dimension(415, 44));
 
@@ -204,6 +194,10 @@ public class Login extends javax.swing.JFrame {
 
         MainPanel.add(MainBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 419, -1, -1));
 
+        TxtPass.setText("jPasswordField1");
+        TxtPass.setPreferredSize(new java.awt.Dimension(415, 44));
+        MainPanel.add(TxtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 345, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -240,18 +234,28 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TxtUserActionPerformed
 
-    private void TxtUser1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtUser1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtUser1ActionPerformed
-
     private void mainMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mainMousePressed
-        // TODO add your handling code here:
-        MainBtn.setBackground(Color.decode("#FFFFFF"));
-        main.setForeground(Color.decode("#000000"));
-        
-        Main main = new Main();
-        main.setVisible(true);
-        dispose();
+        try {
+            // TODO add your handling code here:
+            String username = TxtUser.getText();
+            String pass = TxtPass.getText();
+            
+            MainBtn.setBackground(Color.decode("#FFFFFF"));
+            main.setForeground(Color.decode("#000000"));
+            
+            if (controller.UserValidate(username, pass)) {
+                Main main = new Main();
+                main.setVisible(true);
+                dispose();
+            } else {
+                JOptionPane.showMessageDialog(this, "Usuario no registrado, contáctese con mazapan");
+            }
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_mainMousePressed
 
     /**
@@ -297,8 +301,8 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel BtnClose;
     private javax.swing.JPanel MainBtn;
     private javax.swing.JPanel MainPanel;
+    private javax.swing.JPasswordField TxtPass;
     private javax.swing.JTextField TxtUser;
-    private javax.swing.JTextField TxtUser1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

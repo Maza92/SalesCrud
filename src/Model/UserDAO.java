@@ -13,11 +13,12 @@ import java.util.ArrayList;
  *
  * @author Luis
  */
+
 public class UserDAO {
+    DatabaseConnector conector = new DatabaseConnector();
     
     public ArrayList<User> getAllUsers() throws ClassNotFoundException, SQLException {
         ArrayList<User> user_List = new ArrayList<>();
-        DatabaseConnector conector = new DatabaseConnector();
         Connection con = conector.getConnection();
         String consult = "SELECT * FROM User_Admin";
         
@@ -36,5 +37,16 @@ public class UserDAO {
         }
         
         return user_List;
+    }
+    public boolean setUser(User user) throws ClassNotFoundException, SQLException {
+        Connection con = conector.getConnection();
+        String consult = "INSER INTO User_Admin(name_User,userPassword,entri_Date,exit_Date) VALUES (?,?,?,?)";
+        PreparedStatement ps = con.prepareStatement(consult);
+        ps.setString(1, user.getUserName());
+        ps.setString(2, user.getPassword());
+        ps.setDate(3, java.sql.Date.valueOf(user.getEntriDate()));
+        ps.setDate(4, java.sql.Date.valueOf(user.getExitDate()));
+        
+        return ps.executeUpdate() > 0; 
     }
 }
