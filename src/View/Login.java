@@ -159,6 +159,14 @@ public class Login extends javax.swing.JFrame {
 
         MainBtn.setBackground(new java.awt.Color(254, 175, 0));
         MainBtn.setPreferredSize(new java.awt.Dimension(415, 44));
+        MainBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                MainBtnMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                MainBtnMouseExited(evt);
+            }
+        });
 
         main.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         main.setForeground(new java.awt.Color(255, 255, 255));
@@ -166,6 +174,12 @@ public class Login extends javax.swing.JFrame {
         main.setText("SIGN IN");
         main.setPreferredSize(new java.awt.Dimension(415, 44));
         main.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                mainMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                mainMouseExited(evt);
+            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 mainMousePressed(evt);
             }
@@ -194,7 +208,8 @@ public class Login extends javax.swing.JFrame {
 
         MainPanel.add(MainBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 419, -1, -1));
 
-        TxtPass.setText("jPasswordField1");
+        TxtPass.setBackground(new java.awt.Color(255, 255, 255));
+        TxtPass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(229, 229, 229)));
         TxtPass.setPreferredSize(new java.awt.Dimension(415, 44));
         MainPanel.add(TxtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 345, -1, -1));
 
@@ -239,10 +254,6 @@ public class Login extends javax.swing.JFrame {
             // TODO add your handling code here:
             String username = TxtUser.getText();
             String pass = TxtPass.getText();
-            
-            MainBtn.setBackground(Color.decode("#FFFFFF"));
-            main.setForeground(Color.decode("#000000"));
-            
             if (controller.UserValidate(username, pass)) {
                 Main main = new Main();
                 main.setVisible(true);
@@ -250,13 +261,36 @@ public class Login extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(this, "Usuario no registrado, contáctese con mazapan");
             }
-            
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_mainMousePressed
+
+    private void MainBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MainBtnMouseEntered
+        // TODO add your handling code here:
+        MainBtn.setBackground(Color.decode("#FFFFFF"));
+        main.setForeground(Color.decode("#000000"));
+    }//GEN-LAST:event_MainBtnMouseEntered
+
+    private void MainBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MainBtnMouseExited
+        // TODO add your handling code here:
+        MainBtn.setBackground(Color.decode("#FEAF00"));
+        main.setForeground(Color.decode("#FFFFFF"));
+    }//GEN-LAST:event_MainBtnMouseExited
+
+    private void mainMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mainMouseEntered
+        // TODO add your handling code here:
+        MainBtn.setBackground(Color.decode("#FFFFFF"));
+        main.setForeground(Color.decode("#000000"));
+    }//GEN-LAST:event_mainMouseEntered
+
+    private void mainMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mainMouseExited
+        // TODO add your handling code here:
+        MainBtn.setBackground(Color.decode("#FEAF00"));
+        main.setForeground(Color.decode("#FFFFFF"));
+    }//GEN-LAST:event_mainMouseExited
 
     /**
      * @param args the command line arguments

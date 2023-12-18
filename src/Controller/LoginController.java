@@ -25,12 +25,16 @@ public class LoginController {
     }
     public boolean UserValidate(String name, String pass) throws ClassNotFoundException, SQLException {
         ArrayList<User> usersList = getUsers();
-        System.out.println("userlist obtenida");
+        
         for (User user : usersList) {
             if (name.equals(user.getUserName()) && pass.equals(user.getPassword())) {
                 return true;
             }
         }
         return false;
+    }
+    public int UsersCount() throws ClassNotFoundException, SQLException {
+        ArrayList<User> usersList = getUsers();
+        return usersList.size();
     }
 }

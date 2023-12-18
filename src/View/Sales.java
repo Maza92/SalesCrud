@@ -4,6 +4,9 @@
  */
 package View;
 
+import Controller.LoginController;
+import java.sql.SQLException;
+
 /**
  *
  * @author Luis
@@ -13,8 +16,9 @@ public class Sales extends javax.swing.JPanel {
     /**
      * Creates new form Sales
      */
-    public Sales() {
+    public Sales() throws ClassNotFoundException, SQLException {
         initComponents();
+        
     }
 
     /**
@@ -44,7 +48,7 @@ public class Sales extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 213, 1100, 650));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 1030, 550));
     }// </editor-fold>//GEN-END:initComponents
 
 
