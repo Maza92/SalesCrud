@@ -11,15 +11,11 @@ import lombok.Data;
  * @author Luis
  */
 @Data
-public class Client {
-    
+public class Supplier {
     private int id;
-    private String name;
-    private String lasName;
-    private String email;
-    private String phone;
+    private String companyName;
     private String address;
     private String city;
     private String country;
-    private int saleId;
+    private String phone;
 }

@@ -4,10 +4,22 @@
  */
 package Model;
 
+import java.time.LocalDate;
+import lombok.Data;
+
 /**
  *
  * @author Luis
  */
+@Data
 public class Product {
-    
+   private int id;
+   private String name;
+   private String description;
+   private double price;
+   private int stock;
+   private LocalDate date;
+   private String state;
+   private int idCategory;
+   private int idSupplier;
 }

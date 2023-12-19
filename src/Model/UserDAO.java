@@ -38,6 +38,11 @@ public class UserDAO {
         
         return user_List;
     }
+    public Client getUser(int id) throws ClassNotFoundException, SQLException {
+        Connection con = conector.getConnection();
+        //String consult = "SELECT * FORM User_Admin WHERE User_Admin.id_User = "
+        return null;
+    }
     public boolean setUser(User user) throws ClassNotFoundException, SQLException {
         Connection con = conector.getConnection();
         String consult = "INSER INTO User_Admin(name_User,userPassword,entri_Date,exit_Date) VALUES (?,?,?,?)";

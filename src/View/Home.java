@@ -4,7 +4,10 @@
  */
 package View;
 
+import Controller.ClientController;
 import Controller.LoginController;
+import Controller.ProductController;
+import Controller.SupplierController;
 import java.sql.SQLException;
 
 /**
@@ -14,12 +17,18 @@ import java.sql.SQLException;
 public class Home extends javax.swing.JPanel {
 
     LoginController loginController = new LoginController();
+    SupplierController supplierController = new SupplierController();
+    ClientController clientController = new ClientController();
+    ProductController productController = new ProductController();
     /**
      * Creates new form Sales
      */
     public Home() throws ClassNotFoundException, SQLException {
         initComponents();
         UserCount.setText(String.valueOf(loginController.UsersCount()));
+        SupplierCount.setText(String.valueOf(supplierController.CountSuppliers()));
+        CustomerCount.setText(String.valueOf(clientController.CountClients()));
+        ProductoCount.setText(String.valueOf(productController.CountProducts()));
     }
 
     /**
@@ -33,6 +42,7 @@ public class Home extends javax.swing.JPanel {
 
         CountUsersPanel = new javax.swing.JPanel();
         UserCount = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         CountSuppliersPanel = new javax.swing.JPanel();
         SupplierCount = new javax.swing.JLabel();
         CountCustomersPanel = new javax.swing.JPanel();
@@ -40,7 +50,7 @@ public class Home extends javax.swing.JPanel {
         CountProductPanel = new javax.swing.JPanel();
         ProductoCount = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(0, 0, 0));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         CountUsersPanel.setBackground(new java.awt.Color(254, 175, 0));
@@ -51,7 +61,10 @@ public class Home extends javax.swing.JPanel {
         UserCount.setFont(new java.awt.Font("Arial", 1, 30)); // NOI18N
         UserCount.setForeground(new java.awt.Color(0, 0, 0));
         UserCount.setText("00");
-        CountUsersPanel.add(UserCount, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, -1, -1));
+        CountUsersPanel.add(UserCount, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/UserIcon.png"))); // NOI18N
+        CountUsersPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
         add(CountUsersPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 30, 250, 130));
 
@@ -63,7 +76,7 @@ public class Home extends javax.swing.JPanel {
         SupplierCount.setFont(new java.awt.Font("Arial", 1, 30)); // NOI18N
         SupplierCount.setForeground(new java.awt.Color(0, 0, 0));
         SupplierCount.setText("00");
-        CountSuppliersPanel.add(SupplierCount, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, -1, -1));
+        CountSuppliersPanel.add(SupplierCount, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, -1, -1));
 
         add(CountSuppliersPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 30, 250, 130));
 
@@ -75,7 +88,7 @@ public class Home extends javax.swing.JPanel {
         CustomerCount.setFont(new java.awt.Font("Arial", 1, 30)); // NOI18N
         CustomerCount.setForeground(new java.awt.Color(0, 0, 0));
         CustomerCount.setText("00");
-        CountCustomersPanel.add(CustomerCount, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, -1, -1));
+        CountCustomersPanel.add(CustomerCount, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, -1, -1));
 
         add(CountCustomersPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, 250, 130));
 
@@ -87,7 +100,7 @@ public class Home extends javax.swing.JPanel {
         ProductoCount.setFont(new java.awt.Font("Arial", 1, 30)); // NOI18N
         ProductoCount.setForeground(new java.awt.Color(0, 0, 0));
         ProductoCount.setText("00");
-        CountProductPanel.add(ProductoCount, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, -1, -1));
+        CountProductPanel.add(ProductoCount, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, -1, -1));
 
         add(CountProductPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 250, 130));
     }// </editor-fold>//GEN-END:initComponents
@@ -102,5 +115,6 @@ public class Home extends javax.swing.JPanel {
     private javax.swing.JLabel ProductoCount;
     private javax.swing.JLabel SupplierCount;
     private javax.swing.JLabel UserCount;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

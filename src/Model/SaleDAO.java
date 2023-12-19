@@ -12,24 +12,24 @@ import java.sql.SQLException;
  *
  * @author Luis
  */
-    public class SaleDAO {
-        DatabaseConnector conection = new DatabaseConnector();
-        
-        public boolean registerSale(Sale sale) throws ClassNotFoundException, SQLException {
-            PreparedStatement ps = null;
-            Connection con = conection.getConnection();
-            String sql = "INSERT INTO Sales(date_sale, unit_price, total_sale, id_client, id_payment_method, shipping_Address, state_sale) VALUES (?, ?, ?, ?, ?, ?, ?)";
+public class SaleDAO {
+    DatabaseConnector conection = new DatabaseConnector();
 
-            ps = con.prepareStatement(sql);
-            ps.setDate(1, java.sql.Date.valueOf(sale.getDate()));
-            ps.setBigDecimal(2, BigDecimal.valueOf(sale.getUnitPrice())); 
-            ps.setBigDecimal(3, BigDecimal.valueOf(sale.getTotalSale()));
-            ps.setInt(4, sale.getIdClient());
-            ps.setInt(5, sale.getIdpaymentMethod());
-            ps.setString(6, sale.getShippingAddress());
-            ps.setString(7, sale.getState());
+    public boolean registerSale(Sale sale) throws ClassNotFoundException, SQLException {
+        PreparedStatement ps = null;
+        Connection con = conection.getConnection();
+        String sql = "INSERT INTO Sales(date_sale, unit_price, total_sale, id_client, id_payment_method, shipping_Address, state_sale) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
-            return ps.executeUpdate() > 0; 
+        ps = con.prepareStatement(sql);
+        ps.setDate(1, java.sql.Date.valueOf(sale.getDate()));
+        ps.setBigDecimal(2, BigDecimal.valueOf(sale.getUnitPrice())); 
+        ps.setBigDecimal(3, BigDecimal.valueOf(sale.getTotalSale()));
+        ps.setInt(4, sale.getIdClient());
+        ps.setInt(5, sale.getIdpaymentMethod());
+        ps.setString(6, sale.getShippingAddress());
+        ps.setString(7, sale.getState());
+
+        return ps.executeUpdate() > 0; 
     }
 
 }

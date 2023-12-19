@@ -45,6 +45,9 @@ public class Main extends javax.swing.JFrame {
         BtnSales = new javax.swing.JLabel();
         BtnHome = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         MainPanel = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
 
@@ -63,7 +66,6 @@ public class Main extends javax.swing.JFrame {
         BtnSales.setForeground(new java.awt.Color(0, 0, 0));
         BtnSales.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         BtnSales.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/SaleBtnInactive.png"))); // NOI18N
-        BtnSales.setPreferredSize(new java.awt.Dimension(193, 41));
         BtnSales.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 BtnSalesMouseEntered(evt);
@@ -80,7 +82,6 @@ public class Main extends javax.swing.JFrame {
         BtnHome.setForeground(new java.awt.Color(0, 0, 0));
         BtnHome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         BtnHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/HomeBtnInactive.png"))); // NOI18N
-        BtnHome.setPreferredSize(new java.awt.Dimension(193, 41));
         BtnHome.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 BtnHomeMouseEntered(evt);
@@ -95,13 +96,27 @@ public class Main extends javax.swing.JFrame {
         ButtomsPanel.add(BtnHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 210, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/SignOut.png"))); // NOI18N
-        jLabel1.setPreferredSize(new java.awt.Dimension(27, 28));
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jLabel1MousePressed(evt);
             }
         });
         ButtomsPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(121, 835, -1, -1));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/pngwing 1.png"))); // NOI18N
+        ButtomsPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 99, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(254, 175, 0));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("USER");
+        ButtomsPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 120, -1));
+
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 17)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("USER");
+        ButtomsPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, 120, -1));
 
         getContentPane().add(ButtomsPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -247,6 +262,9 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel MainPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 }
