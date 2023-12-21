@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.CallableStatement;
 import java.util.ArrayList;
 
 /**
@@ -53,5 +54,20 @@ public class UserDAO {
         ps.setDate(4, java.sql.Date.valueOf(user.getExitDate()));
         
         return ps.executeUpdate() > 0; 
+    }
+    public boolean UserValidate(String userName, String password) throws ClassNotFoundException, SQLException {
+        Connection con = conector.getConnection();
+        String consult = "{call UserValidate(?,?)}";
+        CallableStatement cs = con.prepareCall(consult);
+        cs.setString(1, userName);
+        cs.setString(2, password);
+        ResultSet rs = cs.executeQuery();
+        
+        if (rs.next()) {
+            if (rs.getInt("UsuarioValido") == 1) {
+                return true;
+            } 
+        }
+        return false;
     }
 }

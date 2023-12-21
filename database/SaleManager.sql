@@ -61,6 +61,22 @@ CREATE TABLE Category (
 	name_Category NVARCHAR(50) NOT NULL,
 	description_Category NVARCHAR(200) NOT NULL
 );
+GO
 
+CREATE PROCEDURE UserValidate 
+	@name NVARCHAR(50),
+	@password NVARCHAR(50)
+AS 
+BEGIN 
+	DECLARE @userExist INT
+	SELECT @userExist = COUNT(*)
+	FROM User_Admin
+	WHERE User_Admin.name_User = @name AND User_Admin.user_Password = @password
+	IF @userExist > 0
+        SELECT 1 AS UsuarioValido
+    ELSE
+        SELECT 0 AS UsuarioValido
+END;
 
+EXEC UserValidate @name = 'Rosie1977', @password = 'aimfgaq'
 

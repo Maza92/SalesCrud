@@ -24,14 +24,7 @@ public class LoginController {
         return dao.setUser(user);
     }
     public boolean UserValidate(String name, String pass) throws ClassNotFoundException, SQLException {
-        ArrayList<User> usersList = getUsers();
-        
-        for (User user : usersList) {
-            if (name.equals(user.getUserName()) && pass.equals(user.getPassword())) {
-                return true;
-            }
-        }
-        return false;
+        return dao.UserValidate(name, pass);
     }
     public int UsersCount() throws ClassNotFoundException, SQLException {
         ArrayList<User> usersList = getUsers();
