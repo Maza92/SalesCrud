@@ -13,11 +13,11 @@ import java.util.ArrayList;
  */
 public class NewClass {
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
-        SupplierDAO dao = new SupplierDAO();
-        ArrayList<Supplier> list = dao.getAllSuppliers();
+        UserDAO dao = new UserDAO();
+        ArrayList<User> list = dao.getAllUsers();
         
-        for (Supplier user : list) {
-            System.out.println(user.getCompanyName());
+        for (User user : list) {
+            System.out.println(user.getUserName());
         }
     }
 }

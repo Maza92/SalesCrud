@@ -13,14 +13,14 @@ import java.sql.Connection;
  */
 public class DatabaseConnector {
     private String base = "SalesManager";
-    private String url = "jdbc:sqlserver://DESKTOP-FG8MLK9;databaseName=" + base + ";integratedSecurity=true;encrypt=false;";
+    private String url = "jdbc:sqlserver://localhost:1433;databaseName=" + base + ";user=sa;password=Edison12;encrypt=false";
 
     private Connection con = null;
     
     public Connection getConnection() throws ClassNotFoundException, SQLException {
         
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        con = (Connection) DriverManager.getConnection(this.url, "", "");
+        con = (Connection) DriverManager.getConnection(this.url);
             
         return con;
     }

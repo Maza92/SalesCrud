@@ -25,6 +25,7 @@ public class Home extends javax.swing.JPanel {
      */
     public Home() throws ClassNotFoundException, SQLException {
         initComponents();
+        
         UserCount.setText(String.valueOf(loginController.UsersCount()));
         SupplierCount.setText(String.valueOf(supplierController.CountSuppliers()));
         CustomerCount.setText(String.valueOf(clientController.CountClients()));
