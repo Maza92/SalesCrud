@@ -2,8 +2,6 @@ CREATE DATABASE SalesManager;
 
 USE SalesManager
 
-DELETE Sales
-
 CREATE TABLE Customer (
 	id_Customer INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
 	customer_name NVARCHAR(50) NOT NULL,
@@ -60,6 +58,14 @@ CREATE TABLE Category (
 	id_Category INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
 	name_Category NVARCHAR(50) NOT NULL,
 	description_Category NVARCHAR(200) NOT NULL
+);
+GO
+CREATE TABLE User_Admin (
+	id_User INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
+	name_User NVARCHAR(50) NOT NULL,
+	user_Password NVARCHAR(50) NOT NULL,
+	entri_Date DATE NOT NULL,
+	exit_Date DATE NOT NULL
 );
 GO
 
