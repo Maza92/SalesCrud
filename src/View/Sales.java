@@ -5,20 +5,62 @@
 package View;
 
 import Controller.LoginController;
+import Controller.SaleController;
+import Model.Sale;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.UIManager;
+import javax.swing.plaf.FontUIResource;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 /**
  *
  * @author Luis
  */
 public class Sales extends javax.swing.JPanel {
-
+    ArrayList<Sale> SaleList;
+    SaleController controller = new SaleController();
+    String[] header = {"ID", "Date", "Total Price", "State"};
     /**
      * Creates new form Sales
      */
     public Sales() throws ClassNotFoundException, SQLException {
         initComponents();
         
+        
+        UpdateTable();
+        setBackground(new Color(255, 255, 255));
+        UIManager.put("nimbusBlueGrey",new Color(255, 255, 255));
+        
+        DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();
+        headerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        
+        headerRenderer.setBackground(new Color(255, 255, 255));
+        headerRenderer.setForeground(new Color(172, 172, 172));
+        headerRenderer.setFont(new Font("Noto Sans", Font.BOLD, 13));
+        
+        DefaultTableCellRenderer ContentRenderer = new DefaultTableCellRenderer();
+        ContentRenderer.setHorizontalAlignment(JLabel.CENTER);
+        
+        ContentRenderer.setBackground(new Color(255, 255, 255));
+        ContentRenderer.setForeground(new Color(0, 0, 0));
+        
+        SalesTable.setDefaultRenderer(Object.class, ContentRenderer);
+        SalesTable.getTableHeader().setDefaultRenderer(headerRenderer);
+        
+        JTableHeader header = SalesTable.getTableHeader();
+        header.setPreferredSize(new Dimension(header.getWidth(), 40));
+        
+        SalesTable.getColumnModel().getColumn(0).setMaxWidth(30);
+        SalesTable.setGridColor(Color.white);
+        SalesTable.setIntercellSpacing(new Dimension(0,0));
     }
 
     /**
@@ -31,11 +73,16 @@ public class Sales extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        SalesTable = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        BtnAdd = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        SalesTable.setBackground(new java.awt.Color(255, 255, 255));
+        SalesTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        SalesTable.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
+        SalesTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -43,17 +90,60 @@ public class Sales extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "", "", "", ""
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        SalesTable.setFocusable(false);
+        SalesTable.setOpaque(false);
+        SalesTable.setRowHeight(25);
+        SalesTable.setSelectionBackground(new java.awt.Color(153, 153, 153));
+        SalesTable.setSelectionForeground(new java.awt.Color(51, 51, 51));
+        SalesTable.getTableHeader().setResizingAllowed(false);
+        SalesTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(SalesTable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 1030, 550));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 1150, 770));
+
+        jLabel1.setFont(new java.awt.Font("Noto Sans", 1, 22)); // NOI18N
+        jLabel1.setText("Sales List");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        BtnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/AddSaleBtnInactive.png"))); // NOI18N
+        BtnAdd.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                BtnAddMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BtnAddMouseExited(evt);
+            }
+        });
+        add(BtnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 10, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
+    private void BtnAddMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnAddMouseEntered
+        // TODO add your handling code here:
+        BtnAdd.setIcon(new ImageIcon(getClass().getResource("/Images/AddSaleBtnHoverActive.png")));
+    }//GEN-LAST:event_BtnAddMouseEntered
+
+    private void BtnAddMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnAddMouseExited
+        // TODO add your handling code here:
+        BtnAdd.setIcon(new ImageIcon(getClass().getResource("/Images/AddSaleBtnInactive.png")));
+    }//GEN-LAST:event_BtnAddMouseExited
+
+    private void UpdateTable() throws ClassNotFoundException, SQLException {
+        SaleList = controller.getAllSales();
+        DefaultTableModel model = new DefaultTableModel(header, 0);
+        for (Sale sale : SaleList) {
+            Object[] data = {sale.getId(), sale.getDate(), sale.getTotalSale(), sale.getState()};
+            model.addRow(data);
+        }
+        SalesTable.setModel(model);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel BtnAdd;
+    private javax.swing.JTable SalesTable;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

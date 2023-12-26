@@ -43,6 +43,7 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() throws IOException {
         initComponents();
+        setResizable(false);
         setLocationRelativeTo(this);
         TxtUser.setBorder(BorderFactory.createCompoundBorder(TxtUser.getBorder(), BorderFactory.createEmptyBorder(0, 13, 0, 0)));
         TxtPass.setBorder(BorderFactory.createCompoundBorder(TxtPass.getBorder(), BorderFactory.createEmptyBorder(0, 13, 0, 0)));

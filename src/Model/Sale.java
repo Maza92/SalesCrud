@@ -12,7 +12,7 @@ public class Sale {
     private LocalDate date;
     private double unitPrice;
     private double totalSale;
-    private int idClient;
+    private int idProduct;
     private int idpaymentMethod;
     private String shippingAddress;
     private String state;
