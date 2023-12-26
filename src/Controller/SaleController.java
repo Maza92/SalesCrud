@@ -19,7 +19,13 @@ public class SaleController {
     public SaleController() {
         dao = new SaleDAO();
     }
+    public boolean addSale(Sale sale) throws ClassNotFoundException, SQLException {
+        return dao.registerSale(sale);
+    }
     public ArrayList<Sale> getAllSales() throws ClassNotFoundException, SQLException {
         return dao.getAllSales();
+    }
+    public int CountSales() throws ClassNotFoundException, SQLException {
+        return dao.getAllSales().size();
     }
 }

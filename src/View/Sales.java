@@ -58,7 +58,7 @@ public class Sales extends javax.swing.JPanel {
         JTableHeader header = SalesTable.getTableHeader();
         header.setPreferredSize(new Dimension(header.getWidth(), 40));
         
-        SalesTable.getColumnModel().getColumn(0).setMaxWidth(30);
+        SalesTable.getColumnModel().getColumn(0).setMaxWidth(40);
         SalesTable.setGridColor(Color.white);
         SalesTable.setIntercellSpacing(new Dimension(0,0));
     }

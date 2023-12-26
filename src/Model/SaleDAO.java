@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.crypto.AEADBadTagException;
 
 /**
@@ -18,21 +20,25 @@ import javax.crypto.AEADBadTagException;
 public class SaleDAO {
     DatabaseConnector conection = new DatabaseConnector();
 
-    public boolean registerSale(Sale sale) throws ClassNotFoundException, SQLException {
-        PreparedStatement ps = null;
-        Connection con = conection.getConnection();
-        String sql = "INSERT INTO Sales(date_sale, unit_price, total_sale, id_product, id_payment_method, shipping_Address, state_sale) VALUES (?, ?, ?, ?, ?, ?, ?)";
-
-        ps = con.prepareStatement(sql);
-        ps.setDate(1, java.sql.Date.valueOf(sale.getDate()));
-        ps.setBigDecimal(2, BigDecimal.valueOf(sale.getUnitPrice())); 
-        ps.setBigDecimal(3, BigDecimal.valueOf(sale.getTotalSale()));
-        ps.setInt(4, sale.getIdProduct());
-        ps.setInt(5, sale.getIdpaymentMethod());
-        ps.setString(6, sale.getShippingAddress());
-        ps.setString(7, sale.getState());
-
-        return ps.executeUpdate() > 0; 
+    public boolean registerSale(Sale sale) throws ClassNotFoundException {
+        try {
+            PreparedStatement ps = null;
+            Connection con = conection.getConnection();
+            String sql = "INSERT INTO Sales(date_sale, unit_price, total_sale, id_product, id_payment_method, shipping_Address, state_sale) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            
+            ps = con.prepareStatement(sql);
+            ps.setDate(1, java.sql.Date.valueOf(sale.getDate()));
+            ps.setBigDecimal(2, BigDecimal.valueOf(sale.getUnitPrice()));
+            ps.setBigDecimal(3, BigDecimal.valueOf(sale.getTotalSale()));
+            ps.setInt(4, sale.getIdProduct());
+            ps.setInt(5, sale.getIdpaymentMethod());
+            ps.setString(6, sale.getShippingAddress());
+            ps.setString(7, sale.getState());
+             
+            return ps.executeUpdate() > 0;
+        } catch (SQLException ex) {
+            return false;
+        }
     }
     public ArrayList<Sale> getAllSales() throws ClassNotFoundException, SQLException {
         ArrayList<Sale> list = new ArrayList<>();
