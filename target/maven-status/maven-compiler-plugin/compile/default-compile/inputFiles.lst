@@ -1,0 +1,8 @@
+/home/luis/Dev/SalesCrud/src/main/java/com/crud/Sales/repository/UserRepository.java
+/home/luis/Dev/SalesCrud/src/main/java/com/crud/Sales/SalesApplication.java
+/home/luis/Dev/SalesCrud/src/main/java/com/crud/Sales/service/UserService.java
+/home/luis/Dev/SalesCrud/src/main/java/com/crud/Sales/model/UserLoginDTO.java
+/home/luis/Dev/SalesCrud/src/main/java/com/crud/Sales/controller/UserController.java
+/home/luis/Dev/SalesCrud/src/main/java/com/crud/Sales/model/User.java
+/home/luis/Dev/SalesCrud/src/main/java/com/crud/Sales/model/UserDTO.java
+/home/luis/Dev/SalesCrud/src/main/java/com/crud/Sales/repository/UserDTOMapper.java
