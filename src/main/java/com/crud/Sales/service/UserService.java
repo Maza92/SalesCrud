@@ -1,7 +1,6 @@
 package com.crud.Sales.service;
 
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.crud.Sales.model.User;
 import com.crud.Sales.model.UserDTO;
-// import com.crud.Sales.repository.UserDTOMapper;
 import com.crud.Sales.repository.UserRepository;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
