@@ -6,8 +6,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.crud.Sales.model.User;
-import com.crud.Sales.model.UserDTO;
+import com.crud.Sales.model.user.User;
+import com.crud.Sales.model.user.UserDTO;
 
 
 @Repository

@@ -1,7 +1,5 @@
 package com.crud.Sales.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,9 +7,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.crud.Sales.model.User;
-import com.crud.Sales.model.UserDTO;
-import com.crud.Sales.model.UserLoginDTO;
+import com.crud.Sales.model.user.User;
+import com.crud.Sales.model.user.UserDTO;
+import com.crud.Sales.model.user.UserLoginDTO;
 import com.crud.Sales.service.UserService;
 
 @RestController
